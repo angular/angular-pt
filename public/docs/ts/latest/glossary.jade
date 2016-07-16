@@ -2,15 +2,24 @@ include _util-fns
 
 // #docregion intro
 :marked
-  # Angular 2 Glossary
+  # Glossário Angular 2
 
   Angular 2 has a vocabulary of its own.
   Most Angular 2 terms are everyday English words
   with a specific meaning within the Angular system.
 
+  O Angular 2 tem seu próprio vocabulário.
+  A maioria dos termos do Angular 2 são palavras comuns em Inglês
+  com um significado específico no Angular.
+
   We have gathered here the most prominent terms
   and a few less familiar ones that have unusual or
   unexpected definitions.
+
+  Nos selecionamos aqui os termos mais relevantes
+  e menos familiares que tem definições não comuns
+  ou não esperadas.
+
 
   [A](#A) [B](#B) [C](#C) [D](#D) [E](#E) [F](#F) [G](#G) [H](#H) [I](#I)
   [J](#J) [K](#K) [L](#L) [M](#M) [N](#N) [O](#O) [P](#P) [Q](#Q) [R](#R)
@@ -26,6 +35,8 @@ include _util-fns
 .l-sub-section
   :marked
     In practice a synonym for [Decoration](#decorator).
+
+    Na prática, um sinônimo de [Decoration](#decorator).
 // #enddocregion a-1
 // #docregion a-2
 :marked
@@ -36,8 +47,15 @@ include _util-fns
     other HTML elements, attributes, properties, and components. They are usually represented
     as HTML attributes, hence the name.
 
+    Uma categoria de Directive que pode escutar e modificar o comportamento de outros 
+    elementos HTML, atributos, propriedades e componentes. Geralmente são representados 
+    como atributos HTML, como o nome sugere.
+
     The `ngClass` directive for adding and removing CSS class names is a good example of
     an Attribute Directive.
+
+    A diretiva `ngClass` para adicionar e remover classes CSS é um bom exemplo 
+    de uma Attribute Directive.
 // #enddocregion a-2
 
 // #docregion b-c
@@ -94,9 +112,17 @@ include _util-fns
     Almost always refers to [Data Binding](#data-binding) and the act of
     binding an HTML object property to a data object property.
 
+    Quase sempre refere a [Data Binding](#data-binding) e ao ato de
+    fazer o link entre a propriedade de um objeto HTML e uma propriedade
+    de um objeto de dados.
+
     May refer to a [Dependency Injection](#dependency-injection) binding
     between a "token" or "key" and a dependency [provider](#provider).
     This more rare usage should be clear in context.
+
+    Pode referir-se a [Injeção de dependencias](#dependency-injection)
+    binding entre um "token" ou uma "chave" e o provedor da dependencia.
+    Este caso mais raro deve ser ter o contexto claro.
 
 :marked
   ## Bootstrap
@@ -107,8 +133,13 @@ include _util-fns
     and optionally registers service [providers](#provider) with the
     [dependency injection system](#dependency-injection).
 
+    O processo de iniciar uma aplicação Angular é chamado "bootstrapping" e é feito usando o método
+    `bootstrap`. Esse método identifica um [Componente](#component) raiz e opcionamente registra 
+    [provedores](#provedores) de serviços usando o [sistema de injeção de dependencias](#dependency-injection).
+
     One can bootstrap multiple apps in the same `index.html`, each with its own top level root.
 
+    Várias aplicações podem existir no mesmo `index.html`, cada uma tem sem próprio componente raiz.
 <a id="C"></a>
 .l-main-section
 :marked
@@ -117,11 +148,19 @@ include _util-fns
   :marked
     The practice of writing compound words or phrases such that each word or abbreviation begins with a capital letter 
     _except the first letter which is a lowercase letter_. 
+
+    A prática de escrever palavras compostas ou frases em que cada palavra ou abreviação começa com uma letra maiúscula
+    _exceto a primeira letra que é minúscula_.
     
     Function, property, and method names are typically spelled in camelCase. Examples include: `square`, `firstName` and `getHeroes`.
+
+    Nomes de funções, propriedades e métodos são tipicamente escrítos em camelCase. Exemploes incluem: `square`, `firstName` e `getHeroes`.
     
     This form is also known as **lower camel case**, to distinguish it from **upper camel case** which we call [PascalCase](#pascalcase).
     When we write "camelCase" in this documentation we always mean *lower camel case*.
+
+    Esta forma também /e conhecida como **lower camel case**, para distinguí-la de **upper camel case** que nos chamamos de 
+    [PascalCase](#pascalcase). Quando nos escrevemos "camelCase" nesta documentação nós sempre estamos falando da forma *lower camel case*.
 
 :marked
   ## Component
@@ -131,16 +170,29 @@ include _util-fns
     to a [View](#view) and handling most of the view’s display
     and user-interaction logic.
 
+    Uma classe Angular responsável por expor dados para a [View](#view) além de
+    tratar da maior parte da lógica exibição e de interação do usuário.
+
     The Component is one of the most important building blocks in the Angular system.
     It is, in fact, an Angular [Directive](#directive) with a companion [Template](#template).
 
-    The  developer applies the `#{atSym}Component` !{decorator} to
+    O Componente é uma das peças mais importantes no sistema Angular. 
+    Ele é de fato uma [Directiva](#directive) Angular com um [Template](#template).
+
+    The developer applies the `#{atSym}Component` !{decorator} to
     the component class, thereby attaching to the class the essential component metadata
     that Angular needs to create a component instance and render it with its template
     as a view.
 
+    O desenvolvedor aplica o `#{atSym}Component` !{decorator} na classe do componente para
+    anexar os metadados essenciais que o Angular precisa para criar, instanciar e renderizar
+    os componentes usando seu template como seu view.
+
     Those familiar with "MVC" and "MVVM" patterns will recognize
     the Component in the role of "Controller" or "View Model".
+
+    Aqueles que são familiares com os padrões "MVC" e "MVM" vão
+    reconhecer o Componente no papel de "Controller" ou "View Model"
 // #enddocregion b-c
 
 // #docregion d1
