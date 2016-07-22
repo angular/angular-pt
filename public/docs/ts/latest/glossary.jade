@@ -364,12 +364,16 @@ include _util-fns
 <a id="I"></a>
 .l-main-section
 :marked
-  ## Injector
+  ## Injetor
 .l-sub-section
   :marked
     An object in the Angular [dependency injection system](#dependency-injection)
     that can find a named "dependency" in its cache or create such a thing
     with a registered [provider](#provider).
+
+    Um objeto no [sistema de injeção de dependencias](#dependency-injection) do Angular
+    que pode encontrar uma "dependência" nomeada no seu cache ou criar tal coisa
+    com um [provider](#provider) registrado.
 
 :marked
   ## Input
@@ -380,10 +384,17 @@ include _util-fns
     Data values flow *into* this property from the data source identified
     in the template expression to the right of the equal sign.
 
+    Uma propriedade diretiva que pode ser o ***objeto*** de um
+    [Binding de Propriedade](/docs/ts/latest/guide/template-syntax.html#property-binding).
+    Valores são passados da fonte dos dados para *dentro* dessa propriedade pela idenficação
+    na template string para a direita do sinal de igual. 
+
     See the [Template Syntax](/docs/ts/latest/guide/template-syntax.html#inputs-outputs) chapter.
 
+    Veja o capítulo [Sintaxe de template](/docs/ts/latest/guide/template-syntax.html#inputs-outputs)
+
 :marked
-  ## Interpolation
+  ## Interpolação
 .l-sub-section
   :marked
     A form of [Property Data Binding](#data-binding) in which a
@@ -392,6 +403,12 @@ include _util-fns
     before it is assigned to an element property
     or displayed between element tags as in this example.
 
+    Uma forma de [Data Binding](#data-binding) no qual um 
+    [template expression](#template-expression) entre chaves duplas
+    é renderizada como texto. Esse texto pode ser concatenado com algum texto vizinho
+    antes que seja atribuído a uma propridade de elemento
+    ou exibido entre tags como neste exemplo.
+
   code-example(language="html" escape="html").
     <label>My current hero is {{hero.name}}</label>
 
@@ -399,6 +416,8 @@ include _util-fns
     Learn more about interpolation in the
     [Template Syntax](/docs/ts/latest/guide/template-syntax.html#interpolation) chapter.
 
+    Aprenda mais sobre interpolação no capítulo 
+    [Sintaxe de template](/docs/ts/latest/guide/template-syntax.html#interpolation).
 
 <a id="J"></a>
 
@@ -408,38 +427,66 @@ include _util-fns
   ## kebab-case
 .l-sub-section
   :marked
-    The practice of writing compound words or phrases such that each word is separated by a dash or hyphen (`-`). 
+    The practice of writing compound words or phrases such that each word is separated by a dash or hyphen (`-`).
+
+    A pratica de escrever palavras compostas ou frases sendo que cada palavra é separada é separada por um traço ou hífen (`-`). 
     
     Directive selectors and the root of filenames are often spelled in kebab-case. Examples include: `my-app` and `hero-list.component.ts`.
     
+    Seletores de diretivas e nomes de arquivos são frequentemente descritos in kebab-case. Exemplos como `my-app` e `hero-list.component.ts`.
+
     This form is also known as [dash-case](#dash-case).
+
+    Essa forma também é conhecida como [dash-case](#dash-case).
 
 <a id="L"></a>
 .l-main-section
 :marked
-  ## Lifecycle Hooks
+  ## Lifecycle Hooks (Hooks de Ciclos de vida)
 .l-sub-section
   :marked
     [Directives](#directive) and [Components](#component) have a lifecycle
     managed by Angular as it creates, updates and destroys them.
 
+    [Diretivas](#directive) e [Compotentes](#component) tem um ciclo de vida
+    gerenciado pelo Angular pois é quem os cria, atualiza e destrói.
+
     Developers can tap into key moments in that lifecycle by implementing
     one or more of the "Lifecycle Hook" interfaces.
+
+    Desenvolvedores podem tocar em momentos chave nesse ciclo de vida implementando
+    um ou mais dessas interfaces de "Hooks de Ciclos de Vida". 
 
     Each interface has a single hook method whose name is the interface name prefixed with `ng`.
     For example, the `OnInit` interface has a hook method names `ngOnInit`.
 
-    Angular calls these hook methods in the following order:
-    * `ngOnChanges` - called when an [input](#input)/[output](#output) binding values change
-    * `ngOnInit` - after the first `ngOnChanges`
-    * `ngDoCheck` - developer's custom change detection
-    * `ngAfterContentInit` - after component content initialized
-    * `ngAfterContentChecked` - after every check of component content
-    * `ngAfterViewInit` - after component's view(s) are initialized
-    * `ngAfterViewChecked` - after every check of a component's view(s)
-    * `ngOnDestroy` - just before the directive is destroyed.
+    Cada interface tem um único método hook do qual seu nome é o nome da interface prefixado com `ng`.
+    Por exemplo, a interface `OnInit` tem um método hook chamado `ngOnInit`.
 
+    Angular calls these hook methods in the following order:
+
+    O Angular chama esses métodos hooks seguindo essa ordem:
+
+    * `ngOnChanges` - called when an [input](#input)/[output](#output) binding values change
+    * `ngOnChanges` - chamado quando um binding de [input](#input)/[output](#output) tem seu valor alterado
+    * `ngOnInit` - after the first `ngOnChanges`
+    * `ngOnInit` - depois do primeiro `ngOnChanges`
+    * `ngDoCheck` - developer's custom change detection
+    * `ngDoCheck` - detecção de uma mudança feita pelo desenvolvedor
+    * `ngAfterContentInit` - after component content initialized
+    * `ngAfterContentInit` - depois do conteúdo do componente ser inicializado
+    * `ngAfterContentChecked` - after every check of component content
+    * `ngAfterContentChecked` - depois de cada checagem de conteúdo do componente
+    * `ngAfterViewInit` - after component's view(s) are initialized
+    * `ngAfterViewInit` - depois que a(s) view(s) do componente é inicializada
+    * `ngAfterViewChecked` - after every check of a component's view(s)
+    * `ngAfterViewChecked` - depois de cada checagem de view(s) do componente
+    * `ngOnDestroy` - just before the directive is destroyed.
+    * `ngOnDestroy` - apenas antes da diretiva ser destroída
+    
     Learn more in the [Lifecycle Hooks](/docs/ts/latest/guide/lifecycle-hooks.html) chapter.
+
+    Aprenda mais no capítulo [Lifecycle Hooks](/docs/ts/latest/guide/lifecycle-hooks.html).
 // #enddocregion f-l
 
 // #docregion m1
