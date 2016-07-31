@@ -47,7 +47,7 @@ include _util-fns
     other HTML elements, attributes, properties, and components. They are usually represented
     as HTML attributes, hence the name.
 
-    Uma categoria de Directive que pode escutar e modificar o comportamento de outros 
+    Uma categoria de [Directiva](#directive) que pode escutar e modificar o comportamento de outros 
     elementos HTML, atributos, propriedades e componentes. Geralmente são representados 
     como atributos HTML, como o nome sugere.
 
@@ -55,7 +55,7 @@ include _util-fns
     an Attribute Directive.
 
     A diretiva `ngClass` para adicionar e remover classes CSS é um bom exemplo 
-    de uma Attribute Directive.
+    de uma Diretiva de Atributo.
 // #enddocregion a-2
 
 // #docregion b-c
@@ -120,9 +120,9 @@ include _util-fns
     between a "token" or "key" and a dependency [provider](#provider).
     This more rare usage should be clear in context.
 
-    Pode referir-se a [Injeção de dependencias](#dependency-injection)
-    binding entre um "token" ou uma "chave" e o provedor da dependencia.
-    Este caso mais raro deve ser ter o contexto claro.
+    Pode referir-se a [Injeção de dependências](#dependency-injection)
+    binding entre um "token" ou uma "chave" e o [provedor](#provider) da dependência.
+    Neste caso em específico o contexto deve ser o mais claro possível.
 
 :marked
   ## Bootstrap
@@ -135,7 +135,7 @@ include _util-fns
 
     O processo de iniciar uma aplicação Angular é chamado "bootstrapping" e é feito usando o método
     `bootstrap`. Esse método identifica um [Componente](#component) raiz e opcionamente registra 
-    [provedores](#provedores) de serviços usando o [sistema de injeção de dependencias](#dependency-injection).
+    [provedores](#provider) de serviços usando o [sistema de injeção de dependências](#dependency-injection).
 
     One can bootstrap multiple apps in the same `index.html`, each with its own top level root.
 
@@ -278,10 +278,17 @@ include _util-fns
   :marked
     A Decorator is a **function** that adds metadata to a class, its members (properties, methods) and function arguments.
 
+    Um Decorator é uma função que adiciona metadados a uma classe, seus membros (propriedades, métodos) e argumentos de funções.
+
     Decorators are a JavaScript language [feature](https://github.com/wycats/javascript-decorators), implemented in TypeScript and proposed for ES2016 (AKA ES7).
+
+    Decoratores são uma [funcionalidade](https://github.com/wycats/javascript-decorators) do JavaScript, implementada no TypeScript e proposta para a ES2016 (ou ES7).
 
     We apply a decorator by positioning it
     immediately above or to the left of the thing it decorates.
+
+    Nós aplicamos um decorator posicionando ele 
+    imediatamente em baixo ou a esquerda da "coisa" que ele decora.
 
     Angular has its own set of decorators to help it interoperate with our application parts.
     Here is an example of a `@Component` decorator that identifies a
@@ -299,10 +306,25 @@ include _util-fns
     that it decorates. None of the decorations shown here will "leak" to other
     classes appearing below it in the file.
 
+    O Angular tem seus próprios decorators para ajudá-lo a interoperar com as partes das nossas aplicações.
+    Aqui está um exemplo do decorator `@Component`que ajuda a identificar uma classe como um [Componente](Component) e um
+    decorator `@Input` aplicado a uma propriedade desse componente.
+    O objeto passado como argumento para o `@Component`, omitido no exemplo, teria os metadados pertinentes ao componente.
+    ```
+    @Component({...})
+    export class AppComponent {
+      constructor(@Inject('SpecialFoo') public foo:Foo) {}
+      @Input() name:string;
+    }
+    ```
+
   .alert.is-important
     :marked
       Always include the parentheses `()` when applying a decorator.
       A decorator is a **function** that must be called when applied.
+
+      Sempre inclua os parentesis `()` quando tiver aplicando um decorator.
+      Um decorator é uma **função** que deve ser chamada quando aplicado.
 
 // #docregion d2
 :marked
@@ -313,52 +335,101 @@ include _util-fns
     for creating and delivering parts of an application to other
     parts of an application that request them.
 
+    Injeção de dependências é um padrão de design e um mecanismo 
+    para criar e entregar partes de uma aplicação para outras partes que pedem elas. 
+
     Angular developers prefer to build applications by defining many simple parts
     that each do one thing well and then wire them together at runtime.
+
+    Desenvolvedores Angular preferem criar aplicações definindos muitas partes simples
+    que fazem uma coisa bem e então juntá-las em tempo de execução.
 
     These parts often rely on other parts. An Angular [Component](#component)
     part might rely on a service part to get data or perform a calculation. When a
     part "A" relies on another part "B", we say that "A" depends on "B" and
     that "B" is a dependency of "A".
 
+    Essas partes muitas vezes dependem de outras partes. Uma parte de um [Component](#component) 
+    Angular pode depender de uma parte de um serviço para pegar dados e fazer um cálculo. Quando a
+    parte "A" conta com outra parte "B", nós dizemos que "A" depende de "B" e 
+    "B" é uma dependência de "A".
+
     We can ask a "Dependency Injection System" to create "A"
     for us and handle all the dependencies.
     If "A" needs "B" and "B" needs "C", the system resolves that chain of dependencies
     and returns a fully prepared instance of "A".
+
+    Nós podemos pedir ao "sistema de injeção de dependências" para criar "A"
+    para nós e resolver todas as dependências.
+    Se "A" precisar de "B" e "B" precisar de "C", o sistema vai resolver a cadeia de dependências
+    e retornar uma instância de "A" completamente preparada.
 
     Angular provides and relies upon its own sophisticated
     [Dependency Injection](dependency-injection.html) system
     to assemble and run applications by "injecting" application parts
     into other application parts where and when needed.
 
-    At the core there is an [`Injector`](#injector) that returns dependency values on request.
+    O Angular disponibiliza e conta com seu próprio e sofisticado sistema de 
+    [injeção de dependências](dependency-injection.html) para montar e rodar aplicações
+    "injetando" as partes umas nas outras onde e quando necessarío. 
+
+    At the core is an [`Injector`](#injector) that returns dependency values on request.
     The expression `injector.get(token)` returns the value associated with the given token.
+
+    No core, tem um [`Injector`](#injector) que retorna os valores das dependências quando solicitado.
+    A expressão `injector.get(token)` retorna o valor associado ao token passado.
 
     A token is an Angular type (`OpaqueToken`). We rarely deal with tokens directly; most
     methods accept a class name (`Foo`) or a string ("foo") and Angular converts it
     to a token. When we write `injector.get(Foo)`, the injector returns
     the value associated with the token for the `Foo` class, typically an instance of `Foo` itself.
 
+    Um token é um tipo Angular (`OpaqueToken`). Nós raramente lidamos com os tokens diretamente;
+    a maioria dos métodos aceita a classe (`Foo`) ou a string ("foo") e o Angular converte elas para um token.
+    Quando nós escrevemos `injector.get(Foo)`, o injector retorna o valor associado ao token para a classe `Foo`,
+    que costuma ser uma instância da própria classe `Foo`.
+
     Angular makes similar requests internally during many of its operations
     as when it creates a [`Component`](#AppComponent) for display.
+
+    O Angular faz pedidos similares internamente durante muitas das suas operações
+    quando ele cria um [`Componente`](#AppComponent) para ser exibido.
 
     The `Injector` maintains an internal map of tokens to dependency values.
     If the `Injector` can't find a value for a given token, it creates
     a new value using a `Provider` for that token.
 
+    O `Injector` mantém um mapa interno de tokens para valores de dependências.
+    Se o `Injector` não conseguir encontrar um valor para um token, ele cria 
+    um novo valor usando um `Provider` para aquele token.
+
     A [Provider](#provider) is a recipe for
     creating new instances of a dependency value associated with a particular token.
+
+    Um [Provider](#provider) é uma receita para criar novas instâncias de um valor de 
+    uma dependência associada a um token particular.
 
     An injector can only create a value for a given token if it has
     a `Provider` for that token in its internal provider registry.
     Registering providers is a critical preparatory step.
+
+    Um injector só pode criar um valor para um token se ele tiver um `Provider`
+    correspondente a esse token em seu registro interno.
+    Registrar providers é um passo preparatório de extrema importância.
 
     Angular registers some of its own providers with every injector.
     We can register our own providers. Quite often the best time to register a `Provider`
     is when we [bootstrap](#bootstrap) the application.
     There are other opportunities to register as well.
 
+    O Angular registra alguns dos seus próprios providers em cada injector.
+    Nós podemos registrar nossos próprios providers. Muitas vezes a melhor hora de registrar um `Provder`
+    é quano nós fazemos o [bootstrap](#bootstrap) da aplicação.
+    Entretanto, existem outras oportunidades para fazer o registro.
+
     Learn more in the [Dependency Injection](/docs/ts/latest/guide/dependency-injection.html) chapter.
+
+    Aprenda mais no capítulo sobre [injeção de dependências](/docs/ts/latest/guide/dependency-injection.html).
 :marked
   ## Directive
 .l-sub-section
@@ -366,31 +437,59 @@ include _util-fns
     An Angular class responsible for creating, re-shaping, and interacting with HTML elements
     in the browser DOM. Directives are Angular's most fundamental feature.
 
+    Uma classe Angular responsável por criar, remodellar e interagir com elementos HTML no DOM.
+    Diretivas são a funcionalidade mais fundamental do Angular.
+
     A Directive is almost always associated with an HTML element or attribute.
     We often refer to such an element or attribute as the directive itself.
     When Angular finds a directive in an HTML template,
     it creates the matching directive class instance
     and gives that instance control over that portion of the browser DOM.
 
+    Uma Diretiva é quase sempre associada a um elemento ou um atributo HTML.
+    Muitas vezes nós referimos a um elemento ou um atributo como a própria diretiva.
+    Quando o Angular encontra a diretiva em um template HTML, ele cria um instância da classe
+    correspondente e dá o controle daquele pedaço do DOM para essa instância.
+
     Developers can invent custom HTML markup (e.g., `<my-directive>`) to
     associate with their custom directives. They add this custom markup to HTML templates
     as if they were writing native HTML. In this way, directives become extensions of
     HTML itself.
 
+    Desenvolvedores podem inventar marcação HTML customizada (ex.: `<my-directive>`) 
+    para associar com suas diretivas customizadas. Eles adicionam essa marcação customizada
+    aos templates HTML como se eles tivessem escrevendo HTML nativo. Dessa forma, diretivas
+    se tornam extenções do próprio HTML. 
+
     Directives fall into one of three categories:
+
+    Diretivas podem ser classificadas em uma das três categrias:
 
     1. [Components](#component) that combine application logic with an HTML template to
     render application [views]. Components are usually represented as HTML elements.
     They are the building blocks of an Angular application and the
     developer can expect to write a lot of them.
 
+    1. [Componentes](#component) que combinam lógica da aplicação com um template HTML para
+    renderizar a aplicação [views]. Components são normalmente representados como elementos HTML.
+    Eles são as peças para montar uma aplicação Angular e o 
+    desenvolvedor pode se preparar para escrever muitos deles.
+
     1. [Attribute Directives](#attribute-directive) that can listen to and modify the behavior of
     other HTML elements, attributes, properties, and components. They are usually represented
     as HTML attributes, hence the name.
 
+    1. [Diretivas de atributo](#attribute-directive) que podem escutar e modificar o compotamento
+    de outros elementos HTML, atributos, propriedades e componentes. Elas são normalmente representadas
+    por atributos HTML, como sugere o nome.
+
     1. [Structural Directives](#structural-directive), a directive responsible for
     shaping or re-shaping HTML layout, typically by adding, removing, or manipulating
     elements and their children.
+
+    1. [Diretivas estruturais](#structural-directive), uma diretiva resposável por 
+    modelar ou remodelar o layout HTML, tipicamentes por adicionar, remover ou manipular
+    elementos e seus filhos.
 // #enddocregion d2
 
 // #docregion e1
@@ -403,6 +502,8 @@ include _util-fns
 .l-sub-section
   :marked
     The [official JavaScript language specification](https://en.wikipedia.org/wiki/ECMAScript).
+    
+    A [especificação oficial da lingugagem JavaScript](https://en.wikipedia.org/wiki/ECMAScript).
 
     The latest approved version of JavaScript is
     [ECMAScript 2015](http://www.ecma-international.org/ecma-262/6.0/)
@@ -410,11 +511,22 @@ include _util-fns
     either in this version of the language or a dialect that strives to be
     compatible with it such as [TypeScript](#typesScript).
 
+    A última versão aprovada do JavaScript é a 
+    [ECMAScript 2015](http://www.ecma-international.org/ecma-262/6.0/)
+    (também conhecida como "ES2015" ou "ES6") e muitos desenvolvedores Angular 2 vão escrever
+    suas aplicações ou usando esta versão ou um dialeto compatível como por exemplo o [TypeScript](#typesScript).
+
     Most modern browsers today only support the prior "ECMAScript 5" (AKA ES5) standard.
     Applications written in ES2015 or one of its dialects must be "[transpiled](#transpile)"
     to ES5 JavaScript.
 
+    Muitos dos browsers mais modernos suportam a versão anterior "ECMAScript 5" (ou ES5) como padrão.
+    Aplicações modernas escritas em ES2015 ou em um dos seus dialétos devem ser "[transpiladas](#transpile)"
+    para ES5.
+
     Angular 2 developers may choose to write in ES5 directly.
+
+    Desenvolvedores Angular 2 também podem escolher escrever em ES5 diretamente.
 :marked
   ## ECMAScript 2015
 .l-sub-section
@@ -422,22 +534,33 @@ include _util-fns
     The latest released version of JavaScript,
     [ECMAScript 2015](http://www.ecma-international.org/ecma-262/6.0/)
     (AKA "ES2015" or "ES6")
+
+    A última versão lançada do JavaScript, 
+    [ECMAScript 2015](http://www.ecma-international.org/ecma-262/6.0/)
+    (também conhecida como "ES2015" ou "ES6")
 :marked
   ## ES2015
 .l-sub-section
   :marked
     Short hand for "[ECMAScript 2015](#ecmascript=2015)".
+    
+    Abreviação de "[ECMAScript 2015](#ecmascript=2015)".
 :marked
   ## ES6
 .l-sub-section
   :marked
     Short hand for "[ECMAScript 2015](#ecmascript=2015)".
+
+    Abreviação de "[ECMAScript 2015](#ecmascript=2015)".
 :marked
   ## ES5
 .l-sub-section
   :marked
     Short hand for "ECMAScript 5", the version of JavaScript run by most modern browsers.
     See [ECMAScript](#ecmascript).
+
+    Abreviação de "ECMAScript 5", a versão do JavaScript que roda na maioria dos browsers modernos.
+    Veja [ECMAScript](#ecmascript).
 // #enddocregion e2
 
 // #docregion f-l
