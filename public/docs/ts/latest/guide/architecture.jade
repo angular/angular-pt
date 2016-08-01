@@ -358,40 +358,66 @@ figure
 
 .l-main-section
 :marked
-  ## Directives
+  ## Diretivas
 figure
   img(src="/resources/images/devguide/architecture/directive.png" alt="Parent child" style="float:left; width:150px; margin-left:-40px;margin-right:10px" )
 :marked
   Angular templates are *dynamic*. When Angular renders them, it transforms the DOM
   according to the instructions given by **directives**.
 
+  Templates no Angular são *dinâmicos*. Quando o Angular os renderiza, ele transforma o DOM
+  de acordo com as instruções passadas pelas **diretivas**.
+
   A directive is a class with directive metadata. In !{_Lang} we apply the `@Directive` !{_decorator}
   to attach metadata to the class.
+
+  Uma diretiva é uma classe com metadados de uma diretiva. No !{_Lang} nós aplicamos o !{_decorator} `@Directive`
+  para vincular os metadados à classe.
 <br clear="all">
 :marked
   We already met one form of directive: the component. A component is a *directive-with-a-template*;
   a `@Component` !{_decorator} is actually a `@Directive` !{_decorator} extended with template-oriented features.
+
+  Nós já conhecemos um dos formatos da diretiva: componentes. Um componente é uma *diretiva-com-template*;
+  Um  !{_decorator} `@Component` na verdade é uma extensão  do !{_decorator} `@Directive` com funcionalidades orientadas a templates.
 
 .l-sub-section
   :marked
     While **a component is technically a directive**,
     components are so distinctive and central to Angular applications that we chose
     to separate components from directives in this architectural overview.
+
+    Mesmo que **tecnicamente um componente é uma diretiva**,
+    componentes são tão característicos e fundamentais para aplicações Angular que escolhemos
+    separar componentes de diretivas nesta visão geral da arquitetura.
+
 :marked
   Two *other* kinds of directives exist: _structural_ and _attribute_ directives.
+
+  Dois *outros* tipos de diretivas são: _estruturais_ e de _atributos_.
 
   They tend to appear within an element tag as attributes do,
   sometimes by name but more often as the target of an assignment or a binding.
 
+  Eles tendem a aparecer em um elemento assim como atributos HTML são,
+  às vezes pelo nome, mas frequentemente como destino de uma atribuição ou um binding.
+
   **Structural** directives alter layout by adding, removing, and replacing elements in DOM.
 
+  **Diretivas estruturais** alteraram o layout adicionando, removendo e substituindo elementos no DOM.
+
   Our [example](#templates) template uses two built-in structural directives:
+
+  Nosso [template exemplo](#templates) usa duas diretivas contruídas usando esta estrutura:
 
 +makeExcerpt('app/hero-list.component.1.html', 'structural')
 
 :marked
   * [`*ngFor`](displaying-data.html#ngFor) tells Angular to stamp out one `<li>` per hero in the `heroes` list.
   * [`*ngIf`](displaying-data.html#ngIf) includes the `HeroDetail` component only if a selected hero exists.
+
+  * [`*ngFor`](displaying-data.html#ngFor) diz ao angular para renderizar um `<li>` por herói na lista de `heroes`.
+  * [`*ngIf`](displaying-data.html#ngIf) inclui o componente `HeroDetail` somente quando um herói é selecionado.
 
 block dart-bool
   //- N/A
@@ -400,10 +426,18 @@ block dart-bool
   **Attribute** directives alter the appearance or behavior of an existing element.
   In templates they look like regular HTML attributes, hence the name.
 
+  Diretivas no formato de **atributos** alteram a aparência ou o comportamento de um elemento existente.
+  Em templates elas se parecem com atributos HTML padrão, por isso este nome.
+  
   The `ngModel` directive, which implements two-way data binding, is
   an example of an attribute directive. `ngModel` modifies the behavior of
   an existing element (typically an `<input>`)
   by setting its display value property and responding to change events.
+  
+  A diretiva `ngModel`, que implementa two-way data binding, é
+  um exemplo de uma diretiva no formato de atributo HTML. `ngModel` modifica o comportamento de
+  um elemento existente (normalmente um `<input>`)
+  definindo o valor da propriedade e respondendo à eventos.
 
 +makeExcerpt('app/hero-detail.component.html', 'ngModel')
 :marked
@@ -412,8 +446,17 @@ block dart-bool
   or modify aspects of DOM elements and components
   (for example, [ngStyle](template-syntax.html#ngStyle) and [ngClass](template-syntax.html#ngClass)).
 
+  O Angular possui outras diretivas que podem alterar a estrutura de layout prontas para o uso
+  (Por exemplo, [ngSwitch](template-syntax.html#ngSwitch))
+  ou modificar aspectos de elementos e componentes DOM
+  (Por exemplo, [ngStyle](template-syntax.html#ngStyle) e [ngClass](template-syntax.html#ngClass)).
+
   Of course, we can also write our own directives. Components such as
   `HeroListComponent` are one kind of custom directive.
+  <!-- PENDING: link to where to learn more about other kinds! -->
+
+  É claro que nós também podemos escrever nossas próprias diretivas. Componentes, como
+  `HeroListComponent` são um tipo de diretiva personalizada.
   <!-- PENDING: link to where to learn more about other kinds! -->
 
 .l-main-section
