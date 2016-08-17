@@ -612,8 +612,8 @@ a#aot
     with a registered [provider](#provider).
 
     Um objeto no [sistema de injeção de dependencias](#dependency-injection) do Angular
-    que pode encontrar uma "dependência" nomeada no seu cache ou criar tal coisa
-    com um [provider](#provider) registrado.
+    que pode encontrar uma "dependência" nomeada no seu cache ou criá-lo
+    como um [provider](#provider) registrado.
 
 :marked
   ## Input
@@ -624,10 +624,10 @@ a#aot
     Data values flow *into* this property from the data source identified
     in the template expression to the right of the equal sign.
 
-    Uma propriedade diretiva que pode ser o ***objeto*** de um
+    Uma diretiva de propriedade pode ser o ***objeto*** de um
     [Binding de Propriedade](/docs/ts/latest/guide/template-syntax.html#property-binding).
-    Valores são passados da fonte dos dados para *dentro* dessa propriedade pela idenficação
-    na template string para a direita do sinal de igual. 
+    O valores são passados da origem dos dados para *dentro* dessa propriedade pela idenficação
+    na template expression. 
 
     See the [Template Syntax](/docs/ts/latest/guide/template-syntax.html#inputs-outputs) chapter.
 
@@ -661,16 +661,7 @@ a#aot
 
 <a id="J"></a>
 
-a#jit
 .l-main-section
-:marked
-  ## Just in Time (JIT) Compilation
-.l-sub-section
-  :marked
-    With Angular _Just in Time_  bootstrapping you compile your components and modules in the browser
-    and launch the application dynamically. This is a good choice during development.
-    Consider the [Ahead of Time](#aot) mode for production apps.
-
 <a id="K"></a>
 :marked
   ## kebab-case
@@ -691,7 +682,7 @@ a#jit
 <a id="L"></a>
 .l-main-section
 :marked
-  ## Lifecycle Hooks (Hooks de Ciclos de vida)
+  ## Lifecycle Hooks
 .l-sub-section
   :marked
     [Directives](#directive) and [Components](#component) have a lifecycle
@@ -727,11 +718,11 @@ a#jit
     * `ngAfterContentChecked` - after every check of component content
     * `ngAfterContentChecked` - depois de cada checagem de conteúdo do componente
     * `ngAfterViewInit` - after component's view(s) are initialized
-    * `ngAfterViewInit` - depois que a(s) view(s) do componente é inicializada
+    * `ngAfterViewInit` - depois que a view do componente é inicializada
     * `ngAfterViewChecked` - after every check of a component's view(s)
-    * `ngAfterViewChecked` - depois de cada checagem de view(s) do componente
+    * `ngAfterViewChecked` - depois de cada checagem de view do componente
     * `ngOnDestroy` - just before the directive is destroyed.
-    * `ngOnDestroy` - apenas antes da diretiva ser destroída
+    * `ngOnDestroy` - apenas antes da diretiva ser destroída.
     
     Learn more in the [Lifecycle Hooks](/docs/ts/latest/guide/lifecycle-hooks.html) chapter.
 
