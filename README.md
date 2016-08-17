@@ -24,7 +24,7 @@ Learn how to [contribute to Angular.io](https://github.com/angular/angular.js/bl
 ## Development Setup
 This site relies heavily on node and npm.
 
-1. Make sure you are using the latest node and npm; 
+1. Make sure you are using at least node v.5+ and latest npm; 
 if not install [nvm](https://github.com/creationix/nvm) to get node going on your machine.
 
 1. install these npm packages *globally*: `npm install -g harp gulp`
@@ -35,7 +35,7 @@ The two cloned repo directories must be sibling.
 1. cd into root directory `angular.io/`
 
 1. install the *all-docs* local packages by running `npm install`
-> If running node v.5+, you probably must rebuild `node-sass` in a separate step: `npm rebuild node-sass`
+> You probably must rebuild `node-sass` in a separate step: `npm rebuild node-sass`
 
 1. See [below](#code-sample-development) for code sample development preparation.
 
@@ -119,7 +119,7 @@ This project generates a lot of untracked files, if you wish to reset it to a mi
 
 Also, there is a script available for Linux, OSX and Windows Gitbash users that will setup the project using the steps shown in this section:
 
-- `npm install --no-optional && ./scripts/examples-install.sh`
+- `./scripts/install.sh`
 
 ### Run with current build instead of release packages
 Can switch the `@angular` packages in `~/public/docs/_examples/node_modules` to the current build packages with

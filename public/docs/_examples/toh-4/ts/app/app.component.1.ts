@@ -6,7 +6,6 @@ import { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 
 import { Hero } from './hero';
-import { HeroDetailComponent } from './hero-detail.component';
 // #docregion hero-service-import
 import { HeroService } from './hero.service.1';
 // #enddocregion hero-service-import
@@ -20,7 +19,6 @@ import { HeroService } from './hero.service.1';
   </div>
   <my-hero-detail [hero]="selectedHero"></my-hero-detail>
   `,
-  directives: [HeroDetailComponent],
   // #docregion providers
   providers: [HeroService]
   // #enddocregion providers
@@ -34,9 +32,11 @@ export class AppComponent implements OnInit {
   // #enddocregion heroes-prop
   selectedHero: Hero;
 
+  /*
   // #docregion new-service
   heroService = new HeroService(); // don't do this
   // #enddocregion new-service
+  */
   // #docregion ctor
   constructor(private heroService: HeroService) { }
   // #enddocregion ctor

@@ -39,6 +39,14 @@ block includes
   [pipe operator](./template-syntax.html#pipe) ( | ) to the [Date pipe](../api/common/index/DatePipe-class.html)
   function on the right. All pipes work this way.
 
+.l-sub-section
+  :marked
+    The `Date` and `Currency` pipes need the **ECMAScript Internationalization API**.
+    Safari and other older browsers don't support it. We can add support with a polyfill.
+
+  code-example(language="html").
+    &lt;script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Intl.~locale.en"&gt;&lt;/script&gt;
+
 .l-main-section
 :marked
   ## Built-in pipes
@@ -48,7 +56,7 @@ block includes
 
 .l-sub-section
   :marked
-    Learn more about these and many other built-in pipes in the  the [API Reference](../api/#!?apiFilter=pipe);
+    Learn more about these and many other built-in pipes in the [API Reference](../api/#!?apiFilter=pipe);
     filter for entries that include the word "pipe".
 
     Angular 2 doesn't have a `FilterPipe` or an `OrderByPipe` for reasons explained in an [appendix below](#no-filter-pipe).
@@ -158,10 +166,10 @@ figure.image-display
   Two things to note:
   1. We use our custom pipe the same way we use the built-in pipes.
 
-  1. We must include our pipe in the `pipes` #{_array} of the `@Component` #{_decorator}.
+  1. We must include our pipe in the `declarations` #{_array} of the AppModule.
 
 .callout.is-helpful
-  header Remember the pipes #{_array}!
+  header Remember the declarations #{_array}!
   :marked
     Angular reports an error if we neglect to list our custom pipe.
     We didn't list the `DatePipe` in our previous example because all
@@ -326,9 +334,9 @@ block pure-change
 +makeExample('pipes/ts/app/flying-heroes.pipe.ts','filter')(format='.')
 
   We can derive a `FlyingHeroesImpureComponent` that we derive from the `FlyingHeroesComponent`.
-+makeExample('pipes/ts/app/flying-heroes.component.ts','impure-component','app/flying-heroes.component.ts (FlyingHeroesImpureComponent)')(format='.')
++makeExample('pipes/ts/app/flying-heroes-impure.component.html','template-flying-heroes','app/flying-heroes-impure.component.html (FlyingHeroesImpureComponent)')(format='.')
 :marked
-  The only substantive change is the pipe.
+  The only substantive change is the pipe in the template.
   We can confirm in the <live-example></live-example> that the _flying heroes_
   display updates as we enter new heroes even when we mutate the `heroes` #{_array}.
 
