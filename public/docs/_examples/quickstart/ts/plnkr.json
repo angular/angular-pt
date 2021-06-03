@@ -1,9 +1,0 @@
-{
-  "description": "QuickStart",
-  "files": [
-    "!**/*.d.ts",
-    "!**/*.js",
-    "!**/*.[1].*"
-  ],
-  "tags": ["quickstart"]
-}

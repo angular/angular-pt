@@ -1,7 +1,0 @@
-{
-  "description": "Angular 2 Animations",
-  "files":[
-    "!**/*.d.ts",
-    "!**/*.js"
-  ]
-}
